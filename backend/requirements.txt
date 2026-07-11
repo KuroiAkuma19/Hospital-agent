@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+langgraph
+langchain-groq
+pandas
+pydantic
+sqlalchemy
+passlib
+bcrypt
+pyjwt
+python-multipart
+psycopg2-binary
+gunicorn
