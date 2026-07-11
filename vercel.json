@@ -1,6 +1,22 @@
 {
   "rewrites": [
     {
+      "source": "/api/(.*)",
+      "destination": "/api/index.py"
+    },
+    {
+      "source": "/auth/(.*)",
+      "destination": "/api/index.py"
+    },
+    {
+      "source": "/doctor/(.*)",
+      "destination": "/api/index.py"
+    },
+    {
+      "source": "/admin/(.*)",
+      "destination": "/api/index.py"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
