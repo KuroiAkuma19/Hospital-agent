@@ -6,8 +6,8 @@ import bcrypt
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
-from database import get_db
-import models
+from .database import get_db
+from . import models
 
 SECRET_KEY = os.environ.get("JWT_SECRET_KEY", "supersecretkey")
 ALGORITHM = "HS256"

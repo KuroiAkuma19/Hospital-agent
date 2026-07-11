@@ -6,9 +6,9 @@ from sqlalchemy.orm import Session
 from pydantic import BaseModel
 from typing import List, Optional
 
-from database import engine, Base, get_db
-import models
-import auth
+from .database import engine, Base, get_db
+from . import models
+from . import auth
 from groq import Groq
 from dotenv import load_dotenv
 
