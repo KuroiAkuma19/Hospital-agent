@@ -29,14 +29,13 @@ app.add_middleware(
 
 def init_db(db: Session):
     if not db.query(models.Doctor).first():
-        doc = models.Doctor(
-            username="doctor",
-            hashed_password=auth.get_password_hash("password"),
-            full_name="Dr. Smith",
-            ward="EMERGENCY",
-            status="available"
-        )
-        db.add(doc)
+        doctors = [
+            models.Doctor(username="doctor", hashed_password=auth.get_password_hash("password"), full_name="Dr. Smith", ward="EMERGENCY", status="available"),
+            models.Doctor(username="icu_doc", hashed_password=auth.get_password_hash("password"), full_name="Dr. Sarah Connor", ward="ICU", status="available"),
+            models.Doctor(username="gen_doc", hashed_password=auth.get_password_hash("password"), full_name="Dr. Gregory House", ward="GENERAL", status="available"),
+            models.Doctor(username="ped_doc", hashed_password=auth.get_password_hash("password"), full_name="Dr. Meredith Grey", ward="PEDIATRICS", status="available"),
+        ]
+        db.add_all(doctors)
         db.commit()
 
 @app.on_event("startup")
