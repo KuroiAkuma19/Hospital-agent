@@ -15,7 +15,7 @@ export default function DoctorDashboard() {
   const login = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'}/auth/login`, {
+      const res = await fetch(`/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
@@ -44,7 +44,7 @@ export default function DoctorDashboard() {
 
   const fetchQueue = async () => {
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'}/doctor/queue`, {
+      const res = await fetch(`/doctor/queue`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       if (res.ok) {
@@ -60,7 +60,7 @@ export default function DoctorDashboard() {
 
   const acceptPatient = async (id) => {
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'}/api/queue/${id}/accept`, {
+      const res = await fetch(`/api/queue/${id}/accept?doctor_name=${doctorName}`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });

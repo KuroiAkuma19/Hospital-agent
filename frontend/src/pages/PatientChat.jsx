@@ -20,7 +20,7 @@ export default function PatientChat() {
     if (phase === 'complete' && result?.queue_id) {
       const interval = setInterval(async () => {
         try {
-          const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'}/api/queue/${result.queue_id}/status`);
+          const res = await fetch(`/api/queue/${result.queue_id}/status`);
           if (res.ok) {
             const data = await res.json();
             setQueueStatus(data.status);
@@ -57,7 +57,7 @@ export default function PatientChat() {
     setLoading(true);
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'}/api/chat`, {
+      const response = await fetch(`/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
